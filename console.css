@@ -1,0 +1,74 @@
+/* Written by esjeon */
+
+.console-container {
+  position: relative;
+  width: 95%;
+  
+  background-color: #444;
+  border-color: #555;
+  border-radius: 10px;
+  padding: 10px;
+  
+  text-align: center;
+  font-family: monospace;
+  font-size: 16px;
+  color: #E7E7E7;
+  
+  overflow: auto;
+}
+
+.console-window {
+  width: 100%;
+  margin: 0;
+  border: 0;
+  background-color: #444;
+  text-align: left;
+  word-wrap: normal
+}
+
+.console-cmdline {
+  width: 100%;
+  font-size: 15px;
+  border: 0;
+  resize: none;
+
+  background-color: #444;
+  color: #FFF;
+}
+
+/*.
+console-cmdline:-webkit-input-placeholder
+.console-cmdline:-ms-input-placeholder
+*/
+
+.console-cmdline:-moz-placeholder {
+  color: #989898;
+}
+
+
+.console-bullet {
+  color: #888;
+}
+
+.console-string {
+  color: #44FF44;
+}
+.console-number {
+  color: #FF88FF;
+  font-weight: bold;
+}
+.console-boolean {
+  color: #FF88FF;
+  font-weight: bold;
+}
+.console-undefined {
+  color: #999999;
+}
+
+.console-bullet-exception {
+  color: #F55;
+}
+.console-exception {
+  color: #F55;
+  font-weight: bolder;
+}

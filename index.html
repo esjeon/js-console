@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>JS Bin</title>
+	<link rel="stylesheet" type="text/css" href="console.css" />
+	<script type="text/javascript" src="console.js"></script>
+	<script type="text/javascript">
+		function main() {
+			var con = new JSConsole (document.querySelector("#jsc"));
+			con.evaluate("'asdf'");
+			con.evaluate("123");
+			con.evaluate("123.4");
+			con.evaluate("undefined");
+			con.evaluate("{a:1, b:'2', c:3}");
+			con.evaluate("a");
+		}
+	</script>
+</head>
+<body onload="main()">
+  <div id="jsc"></div>
+</body>
+</html>
+
