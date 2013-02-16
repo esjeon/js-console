@@ -1,4 +1,7 @@
-/* Written by esjeon */
+
+/*
+ * Basic look-and-feel
+ */
 
 .console-container {
   position: relative;
@@ -36,6 +39,12 @@
   color: #FFF;
 }
 
+.console-separator {
+	height: 3px;
+	border: 0;
+	background-color: white;
+}
+
 /*.
 console-cmdline:-webkit-input-placeholder
 .console-cmdline:-ms-input-placeholder
@@ -45,6 +54,14 @@ console-cmdline:-webkit-input-placeholder
   color: #989898;
 }
 
+
+
+/*
+ * Texts
+ *
+ * console-(typename)
+ *
+ */
 
 .console-bullet {
   color: #888;
@@ -72,3 +89,4 @@ console-cmdline:-webkit-input-placeholder
   color: #F55;
   font-weight: bolder;
 }
+
