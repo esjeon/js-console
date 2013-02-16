@@ -6,14 +6,30 @@
 	<link rel="stylesheet" type="text/css" href="console.css" />
 	<script type="text/javascript" src="console.js"></script>
 	<script type="text/javascript">
+		function JSSandbox ()
+		{
+			var frame = document.createElement('IFRAME');
+			frame.style.display = "none";
+			document.body.appendChild(frame);
+
+			this.eval = function(expr) {
+				if (expr.match(/^[ \t]*\{/) !== null)
+					expr = "(" + expr + ")";
+				return frame.contentWindow.eval(expr);
+			};
+		}
+
 		function main() {
-			var con = new JSConsole (document.querySelector("#jsc"));
-			con.evaluate("'asdf'");
-			con.evaluate("123");
-			con.evaluate("123.4");
-			con.evaluate("undefined");
-			con.evaluate("{a:1, b:'2', c:3}");
-			con.evaluate("a");
+			var sandbox = new JSSandbox();
+			var con = new JSConsole (document.querySelector("#jsc"), function(expr) {
+					return sandbox.eval(expr);
+			});
+			con.run("'asdf'");
+			con.run("123");
+			con.run("123.4");
+			con.run("undefined");
+			con.run("{a:1, b:'2', c:3}");
+			con.run("a");
 		}
 	</script>
 </head>

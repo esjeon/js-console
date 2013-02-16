@@ -1,25 +1,10 @@
 
-function JSSandbox ()
-{
-  var frame = document.createElement('IFRAME');
-  frame.style.display = "none";
-  document.body.appendChild(frame);
-
-  this.evaluate = function(expr) {
-    if (expr.match(/^[ \t]*\{/) !== null)
-      expr = "(" + expr + ")";
-    return frame.contentWindow.eval(expr);
-  };
-}
-
-function JSConsole (elm)
+function JSConsole (container, eval)
 {
   var self = this;
   
-  var container = elm;
   var win = document.createElement('PRE');
   var cmdline = document.createElement('TEXTAREA');
-  var sandbox = new JSSandbox();
   var filterbox = document.createElement('textarea');
 
   win.setAttribute('class', 'console-window');
@@ -32,7 +17,7 @@ function JSConsole (elm)
     addEventListener('keypress', function(ev) {
       if (ev.which !== 13) return false;
       if (cmdline.value === "") return false;
-      self.evaluate(cmdline.value);
+      self.run(cmdline.value);
       cmdline.value = '';
 
       if (ev.preventDefault)
@@ -72,10 +57,10 @@ function JSConsole (elm)
     win.appendChild(span);
   }
 
-  self.evaluate = function(expr) {
+  self.run = function(expr) {
     display('expr', expr);
     try {
-      var res = sandbox.evaluate(expr);
+      var res = eval(expr);
       display('bullet', " ▶ ", true);
       display(typeof(res), res);
     } catch (e) {
