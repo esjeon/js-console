@@ -13,8 +13,9 @@ How to use
 `container`: An element in which you want to create a console.  
 `eval`: a `function(exp)` that returns the evaluation result.  
 
-JSConsole has only one method: `function run(expr)`. This evaluates the given string by passing it to `eval`.
+JSConsole provides only one method: `run(expr)`. This evaluates the given string by passing it to `eval`.
 
+If you set `onkeypress` to a `function(event, elem)`, then the function will be called whenever the input box(`elem`) fires a keypress event. This allows more customization.
 
 See index.html for an example.
 

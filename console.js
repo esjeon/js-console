@@ -15,6 +15,12 @@ function JSConsole (container, eval)
     setAttribute('value', '');
     setAttribute('placeholder', "Enter an expression here.");
     addEventListener('keypress', function(ev) {
+      if (self.onkeypress) {
+        var res = self.onkeypress(ev, cmdline);
+        if (res !== undefined && !res)
+          return;
+      }
+
       if (ev.which !== 13) return false;
       if (cmdline.value === "") return false;
       self.run(cmdline.value);
@@ -68,5 +74,7 @@ function JSConsole (container, eval)
       display('exception', (e.message)? e.message: e);
     }
   };
+
+  self.onkeypress = function() {}
 }
 
